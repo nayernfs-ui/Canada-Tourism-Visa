@@ -140,16 +140,6 @@ document.querySelectorAll('input, select, textarea').forEach((element) => {
   }
 });
 
-// Initialize EmailJS
-window.addEventListener('load', () => {
-  emailjs.init('P3BG2Eggnf6Q_xUyN');
-  
-  // Attach form submission handler after DOM is ready
-  if (form) {
-    form.addEventListener('submit', handleFormSubmit);
-  }
-});
-
 // Form submission handler
 function handleFormSubmit(e) {
   e.preventDefault();
@@ -159,10 +149,41 @@ function handleFormSubmit(e) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    // Prepare email content
-    const emailContent = formatFormDataForEmail(data);
+    // Send form data via FormSubmit.co
+    fetch('https://formsubmit.co/ajax/nayer.nfs@gmail.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        alert('Application submitted successfully! We will review your information and contact you soon.');
+        form.reset();
+      })
+      .catch(error => {
+        console.error('Error sending form:', error);
+        alert('Application submitted but there was an issue sending the confirmation email. Please contact support.');
+        form.reset();
+      });
+  } else {
+    alert('Please fix the errors in the form before submitting.');
+    // Scroll to first error
+    const firstError = document.querySelector('.error-message:not(.hidden)');
+    if (firstError) {
+      firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+}
 
-    // Send email using EmailJS
+// Initialize EmailJS
+window.addEventListener('load', () => {
+  // Attach form submission handler after DOM is ready
+  if (form) {
+    form.addEventListener('submit', handleFormSubmit);
+  }
+});
     sendFormEmail(emailContent, data)
       .then(() => {
         alert('Application submitted successfully! We will review your information and contact you soon.');
@@ -181,33 +202,6 @@ function handleFormSubmit(e) {
       firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
-}
-
-// Format form data for email
-function formatFormDataForEmail(data) {
-  let content = '<h2>Canada Tourism Visa Application Form</h2>';
-  content += '<p><strong>Submitted on:</strong> ' + new Date().toLocaleString() + '</p>';
-  content += '<hr>';
-  
-  for (const [key, value] of Object.entries(data)) {
-    if (value && value.trim() !== '') {
-      const displayKey = key.replace(/_/g, ' ');
-      content += '<p><strong>' + displayKey + ':</strong> ' + value + '</p>';
-    }
-  }
-  
-  return content;
-}
-
-// Send form email
-function sendFormEmail(emailContent, data) {
-  return emailjs.send('service_0mih7bb', 'template_r8k8vjn', {
-    to_email: 'nayer.nfs@gmail.com',
-    from_name: data.Full_Name || 'Visa Applicant',
-    form_content: emailContent,
-    subject: 'New Canada Tourism Visa Application',
-    reply_to: data.Email || 'noapply@example.com'
-  });
 }
 
 // Date validation helper
