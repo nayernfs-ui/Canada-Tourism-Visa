@@ -143,10 +143,15 @@ document.querySelectorAll('input, select, textarea').forEach((element) => {
 // Initialize EmailJS
 window.addEventListener('load', () => {
   emailjs.init('P3BG2Eggnf6Q_xUyN');
+  
+  // Attach form submission handler after DOM is ready
+  if (form) {
+    form.addEventListener('submit', handleFormSubmit);
+  }
 });
 
-// Form submission
-form.addEventListener('submit', (e) => {
+// Form submission handler
+function handleFormSubmit(e) {
   e.preventDefault();
 
   if (validateForm()) {
@@ -176,7 +181,7 @@ form.addEventListener('submit', (e) => {
       firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
-});
+}
 
 // Format form data for email
 function formatFormDataForEmail(data) {
