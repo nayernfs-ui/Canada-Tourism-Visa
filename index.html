@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>استمارة طلب تأشيرة السياحة الكندية</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>استمارة طلب تأشيرة السياحة الكندية</h1>
+        <p class="subtitle">أكمل النموذج أدناه لتقديم طلب الحصول على تأشيرة سياحية كندية</p>
+      </header>
+
+      <form id="visaForm" method="POST" action="/api/submit">
+        <!-- Personal Information Section -->
+        <fieldset id="personalInfo" class="form-section">
+          <legend class="section-title">معلومات شخصية</legend>
+
+          <div class="question-group">
+            <label for="fullName">الاسم بالكامل <span class="required">*</span></label>
+            <input
+              type="text"
+              id="fullName"
+              name="Full_Name"
+              required
+              placeholder="أدخل اسمك بالكامل"
+            />
+            <span class="error-message" id="error-fullName"></span>
+          </div>
+
+          <div class="question-group">
+            <label for="applicationNumber">رقم التليفون الحالي <span class="required">*</span></label>
+            <input
+              type="text"
+              id="applicationNumber"
+              name="Application_Number"
+              required
+              placeholder="أدخل رقم التطبيق"
+            />
+            <span class="error-message" id="error-applicationNumber"></span>
+          </div>
+
+          <div class="question-group">
+            <label for="currentAddress">عنوان الإقامة الحالي بالتفصيل <span class="required">*</span></label>
+            <textarea
+              id="currentAddress"
+              name="Current_Address"
+              required
+              placeholder="أدخل عنوانك الحالي بالتفصيل"
+              rows="3"
+            ></textarea>
+            <span class="error-message" id="error-currentAddress"></span>
+          </div>
+
+          <div class="question-group">
+            <label>هل أنت مقيم دائم قانوني في الولايات المتحدة وإذا كنت لديك بطاقة إقامة سارية (بطاقة تسجيل الأجنبي)؟ <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup" aria-label="مقيم دائم">
+              <label>
+                <input type="radio" name="PermanentResident" value="yes" required /> نعم
+              </label>
+              <label>
+                <input type="radio" name="PermanentResident" value="no" /> لا
+              </label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <label>هل تحمل حالياً بتأشيرة دخول غير مهاجر سارية إلى الولايات المتحدة؟ <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup">
+              <label>
+                <input type="radio" name="CurrentNonimmigrantVisa" value="yes" required /> نعم
+              </label>
+              <label>
+                <input type="radio" name="CurrentNonimmigrantVisa" value="no" /> لا
+              </label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <label>هل تستخدم جواز سفر مختلفاً في هذه الطلب عن الجواز الذي استخدمته للحصول على تأشيرة دخول غير مهاجر إلى الولايات المتحدة؟ <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup">
+              <label>
+                <input type="radio" name="DifferentPassport" value="yes" required /> نعم
+              </label>
+              <label>
+                <input type="radio" name="DifferentPassport" value="no" /> لا
+              </label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <label>خلال الخمس سنوات الماضية هل أقمت في بلد غير بلدك الأصلي أكثر من ستة أشهر <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="stayOutsideOriginCountry" value="نعم" required onchange="toggleStayFields()" />
+                نعم
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="stayOutsideOriginCountry" value="لا" required onchange="toggleStayFields()" />
+                لا
+              </label>
+            </div>
+            
+            <div class="sub-fields" id="stayFieldsContainer" style="display: none;">
+              <div id="countriesContainer">
+                <div class="country-entry">
+                  <div class="country-entry-header">
+                    <h4>البلد 1</h4>
+                    <button type="button" class="btn-remove-country" onclick="removeCountryEntry(this)" style="display: none;">حذف</button>
+                  </div>
+                  
+                  <div class="question-group">
+                    <label>اسم البلد</label>
+                    <input
+                      type="text"
+                      class="countryName"
+                      name="Country_Name_1"
+                      placeholder="أدخل اسم البلد"
+                    />
+                  </div>
+
+                  <div class="question-group">
+                    <label>الحالة (مواطن - مقيم - مهاجر - اخرى)</label>
+                    <input
+                      type="text"
+                      class="countryStatus"
+                      name="Country_Status_1"
+                      placeholder="اختر الحالة"
+                    />
+                  </div>
+
+                  <div class="question-group">
+                    <label>من يوم - شهر - سنة</label>
+                    <div class="date-row-small">
+                      <input
+                        type="number"
+                        name="Country_ResidenceDay_1"
+                        placeholder="يوم"
+                        min="1"
+                        max="31"
+                      />
+                      <input
+                        type="number"
+                        name="Country_ResidenceMonth_1"
+                        placeholder="شهر"
+                        min="1"
+                        max="12"
+                      />
+                      <input
+                        type="number"
+                        name="Country_ResidenceYear_1"
+                        placeholder="سنة"
+                        min="1900"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="question-group">
+                    <label>إلى يوم - شهر - سنة</label>
+                    <div class="date-row-small">
+                      <input
+                        type="number"
+                        name="Country_ResidenceEndDay_1"
+                        placeholder="يوم"
+                        min="1"
+                        max="31"
+                      />
+                      <input
+                        type="number"
+                        name="Country_ResidenceEndMonth_1"
+                        placeholder="شهر"
+                        min="1"
+                        max="12"
+                      />
+                      <input
+                        type="number"
+                        name="Country_ResidenceEndYear_1"
+                        placeholder="سنة"
+                        min="1900"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="button" class="btn btn-secondary" onclick="addCountryEntry()" style="margin-top: 15px;">+ إضافة بلد آخر</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Education Section -->
+        <fieldset id="educationInfo" class="form-section">
+          <legend class="section-title">التعليم</legend>
+
+          <div id="educationContainer">
+            <div class="education-entry">
+              <div class="education-entry-header">
+                <h4>التعليم 1</h4>
+                <button type="button" class="btn-remove-education" onclick="removeEducationEntry(this)" style="display: none;">حذف</button>
+              </div>
+
+              <div class="question-group">
+                <label>اسم المؤهل التعليمي <span class="required">*</span></label>
+                <input
+                  type="text"
+                  class="qualificationName"
+                  name="Qualification_Name_1"
+                  placeholder="أدخل اسم المؤهل التعليمي"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>اسم المؤسسة التعليمية <span class="required">*</span></label>
+                <input
+                  type="text"
+                  class="institutionName"
+                  name="Institution_Name_1"
+                  placeholder="أدخل اسم المؤسسة التعليمية"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ التخرج <span class="required">*</span></label>
+                <div class="date-row">
+                  <input
+                    type="number"
+                    name="Graduation_Day_1"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Graduation_Month_1"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Graduation_Year_1"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>الشعبة <span class="required">*</span></label>
+                <input
+                  type="text"
+                  class="certificate"
+                  name="Certificate_1"
+                  placeholder="أدخل نوع الشعبة"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>عنوان المؤسسة التعليمية بالتفصيل <span class="required">*</span></label>
+                <textarea
+                  class="institutionAddress"
+                  name="Institution_Address_1"
+                  placeholder="أدخل عنوان المؤسسة التعليمية بالتفصيل"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="btn btn-secondary" onclick="addEducationEntry()" style="margin-top: 15px;">+ إضافة تعليم آخر</button>
+        </fieldset>
+
+        <!-- Military Service Section -->
+        <fieldset id="militaryService" class="form-section">
+          <legend class="section-title">الخدمة العسكرية</legend>
+
+          <div class="question-group">
+            <label>هل قمت بأداء الخدمة العسكرية ؟ <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="militaryService" value="نعم" required onchange="toggleMilitaryFields()" />
+                نعم
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="militaryService" value="لا" required onchange="toggleMilitaryFields()" />
+                لا
+              </label>
+            </div>
+            
+            <div class="sub-fields" id="militaryFieldsContainer" style="display: none;">
+              <div class="question-group">
+                <label for="serviceGovernorate">محافظة الخدمة</label>
+                <input
+                  type="text"
+                  id="serviceGovernorate"
+                  name="Service_Governorate"
+                  placeholder="أدخل محافظة الخدمة"
+                />
+              </div>
+
+              <div class="question-group">
+                <label for="serviceWeapon">السلاح</label>
+                <input
+                  type="text"
+                  id="serviceWeapon"
+                  name="Service_Weapon"
+                  placeholder="أدخل نوع السلاح"
+                />
+              </div>
+
+              <div class="question-group">
+                <label for="serviceRank">الرتبة</label>
+                <input
+                  type="text"
+                  id="serviceRank"
+                  name="Service_Rank"
+                  placeholder="أدخل الرتبة"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ البداية والنهاية (شهر وسنة)</label>
+                <div class="date-range-row">
+                  <div>
+                    <label class="sub-label">من</label>
+                    <div class="date-row-small">
+                      <input
+                        type="number"
+                        name="Military_Start_Month"
+                        placeholder="شهر"
+                        min="1"
+                        max="12"
+                      />
+                      <input
+                        type="number"
+                        name="Military_Start_Year"
+                        placeholder="سنة"
+                        min="1900"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="sub-label">إلى</label>
+                    <div class="date-row-small">
+                      <input
+                        type="number"
+                        name="Military_End_Month"
+                        placeholder="شهر"
+                        min="1"
+                        max="12"
+                      />
+                      <input
+                        type="number"
+                        name="Military_End_Year"
+                        placeholder="سنة"
+                        min="1900"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Work Experience Section -->
+        <fieldset id="workExperience" class="form-section">
+          <legend class="section-title">التاريخ الوظيفي</legend>
+
+          <div id="jobsContainer">
+            <div class="job-entry">
+              <div class="job-entry-header">
+                <h4>الوظيفة 1</h4>
+                <button type="button" class="btn-remove-job" onclick="removeJobEntry(this)" style="display: none;">حذف</button>
+              </div>
+
+              <div class="question-group">
+                <label>المسمى الوظيفي</label>
+                <input
+                  type="text"
+                  class="jobTitle"
+                  name="Job_Title_1"
+                  placeholder="أدخل المسمى الوظيفي"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>اسم الشركة</label>
+                <input
+                  type="text"
+                  class="companyName"
+                  name="Company_Name_1"
+                  placeholder="أدخل اسم الشركة"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>عنوان الشركة بالتفصيل</label>
+                <textarea
+                  class="companyAddress"
+                  name="Company_Address_1"
+                  placeholder="أدخل عنوان الشركة بالتفصيل"
+                  rows="2"
+                ></textarea>
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ البداية والنهاية (شهر وسنة)</label>
+                <div class="date-range-row">
+                  <div>
+                    <label class="sub-label">من</label>
+                    <div class="date-row-small">
+                      <input
+                        type="number"
+                        name="Work_Start_Month_1"
+                        placeholder="شهر"
+                        min="1"
+                        max="12"
+                      />
+                      <input
+                        type="number"
+                        name="Work_Start_Year_1"
+                        placeholder="سنة"
+                        min="1900"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="sub-label">إلى</label>
+                    <div class="date-row-small">
+                      <input
+                        type="number"
+                        name="Work_End_Month_1"
+                        placeholder="شهر"
+                        min="1"
+                        max="12"
+                      />
+                      <input
+                        type="number"
+                        name="Work_End_Year_1"
+                        placeholder="سنة"
+                        min="1900"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="btn btn-secondary" onclick="addJobEntry()" style="margin-top: 15px;">+ إضافة وظيفة أخرى</button>
+
+        <!-- Travel History Section -->
+        <fieldset id="travelHistory" class="form-section">
+          <legend class="section-title">سجل السفر</legend>
+
+          <div class="question-group">
+            <label>خلال الخمس سنوات الماضية هل سافرت إلى أي بلد غير بلد الجنسية أو البلد الذي تعيش فيه الآن ؟ <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="travelHistory" value="نعم" required onchange="toggleTravelFields()" />
+                نعم
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="travelHistory" value="لا" required onchange="toggleTravelFields()" />
+                لا
+              </label>
+            </div>
+            
+            <div class="sub-fields" id="travelFieldsContainer" style="display: none;">
+              <div id="travelsContainer">
+                <div class="travel-entry">
+                  <div class="travel-entry-header">
+                    <h4>الرحلة 1</h4>
+                    <button type="button" class="btn-remove-travel" onclick="removeTravelEntry(this)" style="display: none;">حذف</button>
+                  </div>
+
+                  <div class="question-group">
+                    <label>اسم البلد</label>
+                    <input
+                      type="text"
+                      class="travelCountry"
+                      name="Travel_Country_1"
+                      placeholder="أدخل اسم البلد"
+                    />
+                  </div>
+
+                  <div class="question-group">
+                    <label>المدينة</label>
+                    <input
+                      type="text"
+                      class="travelCity"
+                      name="Travel_City_1"
+                      placeholder="أدخل المدينة"
+                    />
+                  </div>
+
+                  <div class="question-group">
+                    <label>غرض الزيارة</label>
+                    <input
+                      type="text"
+                      class="travelPurpose"
+                      name="Travel_Purpose_1"
+                      placeholder="أدخل غرض الزيارة"
+                    />
+                  </div>
+
+                  <div class="question-group">
+                    <label>تاريخ للدخول والخروج (شهر وسنة)</label>
+                    <div class="date-range-row">
+                      <div>
+                        <label class="sub-label">دخول</label>
+                        <div class="date-row-small">
+                          <input
+                            type="number"
+                            name="Travel_Entry_Month_1"
+                            placeholder="شهر"
+                            min="1"
+                            max="12"
+                          />
+                          <input
+                            type="number"
+                            name="Travel_Entry_Year_1"
+                            placeholder="سنة"
+                            min="1900"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label class="sub-label">خروج</label>
+                        <div class="date-row-small">
+                          <input
+                            type="number"
+                            name="Travel_Exit_Month_1"
+                            placeholder="شهر"
+                            min="1"
+                            max="12"
+                          />
+                          <input
+                            type="number"
+                            name="Travel_Exit_Year_1"
+                            placeholder="سنة"
+                            min="1900"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="button" class="btn btn-secondary" onclick="addTravelEntry()" style="margin-top: 15px;">+ إضافة رحلة أخرى</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Family Information Section -->
+        <fieldset id="familyInfo" class="form-section">
+          <legend class="section-title">معلومات الوالدين</legend>
+
+          <!-- Father Information -->
+          <div class="question-group">
+            <h3 class="subsection-title">معلومات الأب</h3>
+            
+            <div class="sub-fields">
+              <div class="question-group">
+                <label>اسم الأب <span class="required">*</span></label>
+                <input
+                  type="text"
+                  name="Father_Name"
+                  placeholder="أدخل اسم الأب"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الميلاد (يوم - شهر - سنة) <span class="required">*</span></label>
+                <div class="date-row">
+                  <input
+                    type="number"
+                    name="Father_Birth_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Father_Birth_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Father_Birth_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الوفاة (يوم - شهر - سنة)</label>
+                <div class="date-row">
+                  <input
+                    type="number"
+                    name="Father_Death_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Father_Death_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Father_Death_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>العمل الحالي</label>
+                <input
+                  type="text"
+                  name="Father_Current_Job"
+                  placeholder="أدخل العمل الحالي"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>العنوان الحالي</label>
+                <textarea
+                  name="Father_Current_Address"
+                  placeholder="أدخل العنوان الحالي"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mother Information -->
+          <div class="question-group">
+            <h3 class="subsection-title">معلومات الأم</h3>
+            
+            <div class="sub-fields">
+              <div class="question-group">
+                <label>اسم الأم <span class="required">*</span></label>
+                <input
+                  type="text"
+                  name="Mother_Name"
+                  placeholder="أدخل اسم الأم"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الميلاد (يوم - شهر - سنة) <span class="required">*</span></label>
+                <div class="date-row">
+                  <input
+                    type="number"
+                    name="Mother_Birth_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Mother_Birth_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Mother_Birth_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الوفاة (يوم - شهر - سنة)</label>
+                <div class="date-row">
+                  <input
+                    type="number"
+                    name="Mother_Death_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Mother_Death_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Mother_Death_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>العمل الحالي</label>
+                <input
+                  type="text"
+                  name="Mother_Current_Job"
+                  placeholder="أدخل العمل الحالي"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>العنوان الحالي</label>
+                <textarea
+                  name="Mother_Current_Address"
+                  placeholder="أدخل العنوان الحالي"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Marital Status Section -->
+        <fieldset id="maritalStatus" class="form-section">
+          <legend class="section-title">الحالة الاجتماعية</legend>
+
+          <div class="question-group">
+            <label>الحالة الاجتماعية <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup">
+              <label>
+                <input type="radio" name="MaritalStatus" value="single" required onchange="toggleMaritalStatusSection()" /> اعزب
+              </label>
+              <label>
+                <input type="radio" name="MaritalStatus" value="married" onchange="toggleMaritalStatusSection()" /> متزوج
+              </label>
+              <label>
+                <input type="radio" name="MaritalStatus" value="divorced" onchange="toggleMaritalStatusSection()" /> مطلق
+              </label>
+              <label>
+                <input type="radio" name="MaritalStatus" value="widowed" onchange="toggleMaritalStatusSection()" /> ارمل
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Spouse Information Section -->
+        <fieldset id="spouseInfo" class="form-section" style="display: none;">
+          <legend class="section-title">معلومات الزوج/الزوجة</legend>
+
+          <div class="question-group">
+            <label>لو متزوج <span class="required">*</span></label>
+            
+            <div class="sub-fields">
+              <div class="question-group">
+                <label for="spouseName">اسم الزوجة أو الزوج بالكامل</label>
+                <input
+                  type="text"
+                  id="spouseName"
+                  name="Spouse_Name"
+                  placeholder="أدخل اسم الزوج/الزوجة بالكامل"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الميلاد (يوم - شهر - سنة)</label>
+                <div class="date-row-small">
+                  <input
+                    type="number"
+                    name="Spouse_Birth_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Spouse_Birth_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Spouse_Birth_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الزواج (يوم - شهر - سنة)</label>
+                <div class="date-row-small">
+                  <input
+                    type="number"
+                    name="Marriage_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Marriage_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Marriage_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label for="spouseBirthGovernorate">محافظة الميلاد</label>
+                <input
+                  type="text"
+                  id="spouseBirthGovernorate"
+                  name="Spouse_Birth_Governorate"
+                  placeholder="أدخل محافظة الميلاد"
+                />
+              </div>
+
+              <div class="question-group">
+                <label for="spouseCurrentJob">العمل الحالي</label>
+                <input
+                  type="text"
+                  id="spouseCurrentJob"
+                  name="Spouse_Current_Job"
+                  placeholder="أدخل العمل الحالي"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>يرجى ذكر التواريخ (يوم - شهر - سنة)</label>
+                <textarea
+                  name="Spouse_Additional_Dates"
+                  placeholder="أدخل أي معلومات تاريخية إضافية"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Divorced Spouse Information Section -->
+        <fieldset id="divorcedInfo" class="form-section" style="display: none;">
+          <legend class="section-title">معلومات الزوج/الزوجة السابق (إذا كنت مطلقاً)</legend>
+
+          <div class="question-group">
+            <label>لو مطلق <span class="required">*</span></label>
+            
+            <div class="sub-fields">
+              <div class="question-group">
+                <label for="exSpouseName">اسم الزوجة أو الزوج بالكامل</label>
+                <input
+                  type="text"
+                  id="exSpouseName"
+                  name="Ex_Spouse_Name"
+                  placeholder="أدخل اسم الزوج/الزوجة السابق بالكامل"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الميلاد (يوم - شهر - سنة)</label>
+                <div class="date-row-small">
+                  <input
+                    type="number"
+                    name="Ex_Spouse_Birth_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Ex_Spouse_Birth_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Ex_Spouse_Birth_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الزواج (يوم - شهر - سنة)</label>
+                <div class="date-row-small">
+                  <input
+                    type="number"
+                    name="Ex_Marriage_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Ex_Marriage_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Ex_Marriage_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الطلاق (يوم - شهر - سنة)</label>
+                <div class="date-row-small">
+                  <input
+                    type="number"
+                    name="Divorce_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Divorce_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Divorce_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label for="exSpouseBirthGovernorate">محافظة الميلاد</label>
+                <input
+                  type="text"
+                  id="exSpouseBirthGovernorate"
+                  name="Ex_Spouse_Birth_Governorate"
+                  placeholder="أدخل محافظة الميلاد"
+                />
+              </div>
+
+              <div class="question-group">
+                <label for="exSpouseCurrentJob">العمل الحالي</label>
+                <input
+                  type="text"
+                  id="exSpouseCurrentJob"
+                  name="Ex_Spouse_Current_Job"
+                  placeholder="أدخل العمل الحالي"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>يرجى ذكر التواريخ (يوم - شهر - سنة)</label>
+                <textarea
+                  name="Ex_Spouse_Additional_Dates"
+                  placeholder="أدخل أي معلومات تاريخية إضافية"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Widowed Spouse Information Section -->
+        <fieldset id="widowedInfo" class="form-section" style="display: none;">
+          <legend class="section-title">معلومات الزوج/الزوجة المتوفى (إذا كنت أرملاً)</legend>
+
+          <div class="question-group">
+            <label>لو ارمل <span class="required">*</span></label>
+            
+            <div class="sub-fields">
+              <div class="question-group">
+                <label for="deceasedSpouseName">اسم الزوجة أو الزوج بالكامل</label>
+                <input
+                  type="text"
+                  id="deceasedSpouseName"
+                  name="Deceased_Spouse_Name"
+                  placeholder="أدخل اسم الزوج/الزوجة المتوفى بالكامل"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الميلاد (يوم - شهر - سنة)</label>
+                <div class="date-row-small">
+                  <input
+                    type="number"
+                    name="Deceased_Spouse_Birth_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Deceased_Spouse_Birth_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Deceased_Spouse_Birth_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label>تاريخ الوفاة (يوم - شهر - سنة)</label>
+                <div class="date-row-small">
+                  <input
+                    type="number"
+                    name="Deceased_Spouse_Death_Day"
+                    placeholder="يوم"
+                    min="1"
+                    max="31"
+                  />
+                  <input
+                    type="number"
+                    name="Deceased_Spouse_Death_Month"
+                    placeholder="شهر"
+                    min="1"
+                    max="12"
+                  />
+                  <input
+                    type="number"
+                    name="Deceased_Spouse_Death_Year"
+                    placeholder="سنة"
+                    min="1900"
+                  />
+                </div>
+              </div>
+
+              <div class="question-group">
+                <label for="deceasedSpouseBirthGovernorate">محافظة الميلاد</label>
+                <input
+                  type="text"
+                  id="deceasedSpouseBirthGovernorate"
+                  name="Deceased_Spouse_Birth_Governorate"
+                  placeholder="أدخل محافظة الميلاد"
+                />
+              </div>
+
+              <div class="question-group">
+                <label>يرجى ذكر التواريخ (يوم - شهر - سنة)</label>
+                <textarea
+                  name="Deceased_Spouse_Additional_Dates"
+                  placeholder="أدخل أي معلومات تاريخية إضافية"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Children Information Section -->
+        <fieldset id="childrenInfo" class="form-section">
+          <legend class="section-title">معلومات الأبناء</legend>
+
+          <div class="question-group">
+            <label>لو هناك أبناء <span class="required">*</span></label>
+            
+            <div id="childrenContainer">
+              <div class="child-entry">
+                <div class="child-entry-header">
+                  <h4>الابن 1</h4>
+                  <button type="button" class="btn-remove-child" onclick="removeChildEntry(this)" style="display: none;">حذف</button>
+                </div>
+
+                <div class="question-group">
+                  <label for="childName">اسم الابن</label>
+                  <input
+                    type="text"
+                    class="childName"
+                    name="Child_Name_1"
+                    placeholder="أدخل اسم الابن"
+                  />
+                </div>
+
+                <div class="question-group">
+                  <label>تاريخ الميلاد (يوم - شهر - سنة)</label>
+                  <div class="date-row-small">
+                    <input
+                      type="number"
+                      name="Child_Birth_Day_1"
+                      placeholder="يوم"
+                      min="1"
+                      max="31"
+                    />
+                    <input
+                      type="number"
+                      name="Child_Birth_Month_1"
+                      placeholder="شهر"
+                      min="1"
+                      max="12"
+                    />
+                    <input
+                      type="number"
+                      name="Child_Birth_Year_1"
+                      placeholder="سنة"
+                      min="1900"
+                    />
+                  </div>
+                </div>
+
+                <div class="question-group">
+                  <label for="childBirthGovernorate">محافظة الميلاد</label>
+                  <input
+                    type="text"
+                    class="childBirthGovernorate"
+                    name="Child_Birth_Governorate_1"
+                    placeholder="أدخل محافظة الميلاد"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="btn btn-secondary" onclick="addChildEntry()" style="margin-top: 15px;">+ إضافة ابن آخر</button>
+        </fieldset>
+
+        <!-- Visa History Section -->
+        <fieldset id="visaHistory" class="form-section">
+          <legend class="section-title">سجل التأشيرات</legend>
+
+          <div class="question-group">
+            <label>هل تم الرفض في اي سفارة سابقاً <span class="required">*</span></label>
+            <p class="field-instruction">ولو الاجابة بنعم يرجى ذكر اسم بلد الرفض والسبب</p>
+            
+            <textarea
+              name="Previous_Visa_Rejection"
+              placeholder="إذا تم رفض طلبك سابقاً، يرجى ذكر السفارة/البلد والسبب"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="question-group">
+            <label>هل قمت بالتقديم على تأشيرة سياحية كندا قبل ذلك <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup">
+              <label>
+                <input type="radio" name="PreviousCanadianVisa" value="yes" required /> نعم
+              </label>
+              <label>
+                <input type="radio" name="PreviousCanadianVisa" value="no" /> لا
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary">إرسال</button>
+          <button type="reset" class="btn btn-secondary">مسح النموذج</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

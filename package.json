@@ -1,0 +1,14 @@
+{
+  "name": "Canada Tourism Visa Application",
+  "version": "1.0.0",
+  "description": "Canada Tourism Visa Application Form",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server",
+    "serve": "python -m http.server 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["Canada", "visa", "tourism", "application"],
+  "author": "Your Name",
+  "license": "MIT"
+}
