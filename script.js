@@ -149,18 +149,23 @@ function handleFormSubmit(e) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    // Send form data via FormSubmit.co
-    fetch('https://formsubmit.co/ajax/nayer.nfs@gmail.com', {
+    // Send form data via API
+    fetch('/api/send-form', {
       method: 'POST',
-      body: new FormData(form),
       headers: {
-        'Accept': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
     })
       .then(response => response.json())
-      .then(data => {
-        alert('Application submitted successfully! We will review your information and contact you soon.');
-        form.reset();
+      .then(result => {
+        if (result.success) {
+          alert('Application submitted successfully! We will review your information and contact you soon.');
+          form.reset();
+        } else {
+          alert('Application submitted but there was an issue sending the confirmation email. Please contact support.');
+          form.reset();
+        }
       })
       .catch(error => {
         console.error('Error sending form:', error);

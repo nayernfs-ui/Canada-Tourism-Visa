@@ -1,56 +1,38 @@
 # Email Configuration Setup
 
-To enable email sending for the visa application form, follow these steps:
+The form now uses Web3Forms for email delivery. It's completely free and requires just one simple setup step.
 
-## 1. Create an EmailJS Account
-- Go to [EmailJS.com](https://www.emailjs.com)
-- Sign up for a free account
-- Verify your email address
+## Quick Setup (2 minutes)
 
-## 2. Get Your Public Key
-- In EmailJS dashboard, go to **Account**
-- Copy your **Public Key**
+1. **Go to Web3Forms**: https://web3forms.com
+2. **Sign up** with your email (nayer.nfs@gmail.com)
+3. **Verify your email** (check your inbox)
+4. **Copy your Access Key** from the dashboard
+5. **Go to Vercel Project Settings**: https://vercel.com/projects
+6. **Add Environment Variable**:
+   - Name: `WEB3FORMS_ACCESS_KEY`
+   - Value: Paste your access key
+   - Click Save
 
-## 3. Update the Script
-Replace `YOUR_EMAILJS_PUBLIC_KEY` in `script.js` with your actual public key:
+## That's it! 🎉
 
-```javascript
-emailjs.init('YOUR_ACTUAL_PUBLIC_KEY_HERE');
-```
+The form will now send emails to nayer.nfs@gmail.com automatically when users submit the visa application.
 
-## 4. Create Email Service and Template
+## How it works
 
-### Option A: Quick Setup (Recommended)
-1. In EmailJS dashboard, go to **Email Services**
-2. Create a new service or use Gmail/Outlook
-3. Note your **Service ID** (e.g., `default_service`)
-4. Go to **Email Templates**
-5. Create a template with:
-   - **Name**: Use the template name in the code
-   - **Template ID**: Create one or use `default_template`
-   - **Subject**: `New Canada Tourism Visa Application`
-   - **Content**: 
-     ```
-     {{form_content}}
-     
-     From: {{from_name}}
-     Reply-to: {{reply_to}}
-     ```
+- Form data is sent to your Vercel API endpoint (`/api/send-form`)
+- The API forwards the data to Web3Forms
+- Web3Forms delivers the email to nayer.nfs@gmail.com
+- All form fields are included in the email
 
-### Option B: Using Built-in Service
-1. Use your own email or Gmail account in EmailJS
-2. Update the service and template IDs in `script.js` line 153-160
+## Troubleshooting
 
-## 5. Test the Configuration
-- Submit a test form entry
-- Check your inbox at nayer.nfs@gmail.com
-- Verify you receive the application data
+**Email not received?**
+- Check spam folder
+- Verify email address on Web3Forms website
+- Check that access key is correctly set in Vercel environment variables
 
-## Environment Variables (Optional for Production)
-For security, you can also store the public key as an environment variable in Vercel:
-1. Go to your Vercel project settings
-2. Add environment variable: `VITE_EMAILJS_PUBLIC_KEY`
-3. Update the initialization code accordingly
+**Need support?**
+- Web3Forms: https://web3forms.com/help
+- Vercel Environment Variables: https://vercel.com/docs/projects/environment-variables
 
-## Support
-For more details, visit [EmailJS Documentation](https://www.emailjs.com/docs/)
