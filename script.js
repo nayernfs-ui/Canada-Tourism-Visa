@@ -142,7 +142,7 @@ document.querySelectorAll('input, select, textarea').forEach((element) => {
 
 // Initialize EmailJS
 window.addEventListener('load', () => {
-  emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+  emailjs.init('P3BG2Eggnf6Q_xUyN');
 });
 
 // Form submission
@@ -196,7 +196,7 @@ function formatFormDataForEmail(data) {
 
 // Send form email
 function sendFormEmail(emailContent, data) {
-  return emailjs.send('default_service', 'default_template', {
+  return emailjs.send('service_0mih7bb', 'template_r8k8vjn', {
     to_email: 'nayer.nfs@gmail.com',
     from_name: data.Full_Name || 'Visa Applicant',
     form_content: emailContent,
