@@ -140,6 +140,11 @@ document.querySelectorAll('input, select, textarea').forEach((element) => {
   }
 });
 
+// Initialize EmailJS
+window.addEventListener('load', () => {
+  emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+});
+
 // Form submission
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -149,14 +154,20 @@ form.addEventListener('submit', (e) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    console.log('Form submitted with data:', data);
+    // Prepare email content
+    const emailContent = formatFormDataForEmail(data);
 
-    // Here you would typically send the data to your server
-    // Example: fetch('/api/submit', { method: 'POST', body: JSON.stringify(data) })
-
-    // For now, show a success message
-    alert('Application submitted successfully! We will review your information and contact you soon.');
-    form.reset();
+    // Send email using EmailJS
+    sendFormEmail(emailContent, data)
+      .then(() => {
+        alert('Application submitted successfully! We will review your information and contact you soon.');
+        form.reset();
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        alert('Application submitted but there was an issue sending the confirmation email. Please contact support.');
+        form.reset();
+      });
   } else {
     alert('Please fix the errors in the form before submitting.');
     // Scroll to first error
@@ -166,6 +177,33 @@ form.addEventListener('submit', (e) => {
     }
   }
 });
+
+// Format form data for email
+function formatFormDataForEmail(data) {
+  let content = '<h2>Canada Tourism Visa Application Form</h2>';
+  content += '<p><strong>Submitted on:</strong> ' + new Date().toLocaleString() + '</p>';
+  content += '<hr>';
+  
+  for (const [key, value] of Object.entries(data)) {
+    if (value && value.trim() !== '') {
+      const displayKey = key.replace(/_/g, ' ');
+      content += '<p><strong>' + displayKey + ':</strong> ' + value + '</p>';
+    }
+  }
+  
+  return content;
+}
+
+// Send form email
+function sendFormEmail(emailContent, data) {
+  return emailjs.send('default_service', 'default_template', {
+    to_email: 'nayer.nfs@gmail.com',
+    from_name: data.Full_Name || 'Visa Applicant',
+    form_content: emailContent,
+    subject: 'New Canada Tourism Visa Application',
+    reply_to: data.Email || 'noapply@example.com'
+  });
+}
 
 // Date validation helper
 function isValidDate(day, month, year) {
