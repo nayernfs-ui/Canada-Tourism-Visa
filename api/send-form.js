@@ -1,5 +1,3 @@
-const SibApiV3Sdk = require('sib-api-v3-sdk');
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -20,12 +18,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // Initialize Brevo Client
-    let defaultClient = SibApiV3Sdk.ApiClient.instance;
-    let apiKey = defaultClient.authentications['api-key'];
-    apiKey.apiKey = API_KEY;
-    let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-
     // Format form data for email body
     const formDataHtml = Object.entries(formData)
       .map(([key, value]) => {
@@ -34,28 +26,52 @@ export default async function handler(req, res) {
       })
       .join('');
 
-    // Construct Brevo Email
-    let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
-    sendSmtpEmail.subject = `Canada Tourism Visa Application - ${formData.Full_Name || 'Applicant'}`;
-    sendSmtpEmail.htmlContent = `
-      <h2>Canada Tourism Visa Application Submission</h2>
-      <p>A new visa application has been submitted. Details below:</p>
-      <table border="1" cellpadding="10">
-        ${formDataHtml}
-      </table>
-    `;
-    sendSmtpEmail.sender = { name: 'Canada Visa Form', email: SENDER_EMAIL };
-    sendSmtpEmail.to = [{ email: RECIPIENT_EMAIL }];
+    // Call Brevo API via REST endpoint
+    const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': API_KEY,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: { 
+          name: 'Canada Visa Form', 
+          email: SENDER_EMAIL 
+        },
+        to: [{ 
+          email: RECIPIENT_EMAIL,
+          name: 'Visa Team'
+        }],
+        subject: `Canada Tourism Visa Application - ${formData.Full_Name || 'Applicant'}`,
+        htmlContent: `
+          <h2>Canada Tourism Visa Application Submission</h2>
+          <p>A new visa application has been submitted. Details below:</p>
+          <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%;">
+            ${formDataHtml}
+          </table>
+          <hr>
+          <p><small>Submitted on: ${new Date().toLocaleString()}</small></p>
+        `
+      })
+    });
 
-    // Send the Email
-    await apiInstance.sendTransacEmail(sendSmtpEmail);
+    const brevoResult = await brevoResponse.json();
+
+    if (!brevoResponse.ok) {
+      console.error('Brevo API Error:', brevoResult);
+      return res.status(500).json({ 
+        error: 'Failed to send email',
+        details: brevoResult.message || 'Unknown error'
+      });
+    }
 
     return res.status(200).json({ 
       success: true, 
-      message: 'Form submitted and email sent successfully' 
+      message: 'Form submitted and email sent successfully',
+      messageId: brevoResult.messageId
     });
   } catch (error) {
-    console.error('Brevo Email Error:', error);
+    console.error('Email Processing Error:', error);
     return res.status(500).json({ 
       error: 'Failed to process form',
       details: error.message 

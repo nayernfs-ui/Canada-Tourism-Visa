@@ -10,8 +10,5 @@
   },
   "keywords": ["Canada", "visa", "tourism", "application"],
   "author": "Your Name",
-  "license": "MIT",
-  "dependencies": {
-    "sib-api-v3-sdk": "^8.3.0"
-  }
+  "license": "MIT"
 }
