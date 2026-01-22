@@ -1,3 +1,5 @@
+const SibApiV3Sdk = require('sib-api-v3-sdk');
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -6,31 +8,58 @@ export default async function handler(req, res) {
   try {
     const formData = req.body;
 
-    // Send to Web3Forms endpoint
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_ACCESS_KEY,
-        email: 'nayer.nfs@gmail.com',
-        subject: 'New Canada Tourism Visa Application',
-        from_name: formData.Full_Name || 'Visa Applicant',
-        ...formData
-      })
-    });
+    // Configuration using environment variables
+    const API_KEY = process.env.SENDINBLUE_API_KEY;
+    const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'nayer.nfs@gmail.com';
+    const SENDER_EMAIL = process.env.SENDER_EMAIL || 'nayer.nfs@gmail.com';
 
-    const result = await response.json();
-
-    if (result.success) {
-      return res.status(200).json({ success: true, message: 'Form submitted successfully' });
-    } else {
-      return res.status(400).json({ error: 'Failed to submit form', details: result });
+    if (!API_KEY) {
+      return res.status(500).json({ 
+        error: 'Email service not configured',
+        message: 'SENDINBLUE_API_KEY environment variable is missing'
+      });
     }
+
+    // Initialize Brevo Client
+    let defaultClient = SibApiV3Sdk.ApiClient.instance;
+    let apiKey = defaultClient.authentications['api-key'];
+    apiKey.apiKey = API_KEY;
+    let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+
+    // Format form data for email body
+    const formDataHtml = Object.entries(formData)
+      .map(([key, value]) => {
+        const displayKey = key.replace(/_/g, ' ');
+        return `<tr><td><strong>${displayKey}:</strong></td><td>${value || 'N/A'}</td></tr>`;
+      })
+      .join('');
+
+    // Construct Brevo Email
+    let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+    sendSmtpEmail.subject = `Canada Tourism Visa Application - ${formData.Full_Name || 'Applicant'}`;
+    sendSmtpEmail.htmlContent = `
+      <h2>Canada Tourism Visa Application Submission</h2>
+      <p>A new visa application has been submitted. Details below:</p>
+      <table border="1" cellpadding="10">
+        ${formDataHtml}
+      </table>
+    `;
+    sendSmtpEmail.sender = { name: 'Canada Visa Form', email: SENDER_EMAIL };
+    sendSmtpEmail.to = [{ email: RECIPIENT_EMAIL }];
+
+    // Send the Email
+    await apiInstance.sendTransacEmail(sendSmtpEmail);
+
+    return res.status(200).json({ 
+      success: true, 
+      message: 'Form submitted and email sent successfully' 
+    });
   } catch (error) {
-    console.error('Error submitting form:', error);
-    return res.status(500).json({ error: 'Failed to process form', details: error.message });
+    console.error('Brevo Email Error:', error);
+    return res.status(500).json({ 
+      error: 'Failed to process form',
+      details: error.message 
+    });
   }
 }
 
