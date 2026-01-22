@@ -189,25 +189,6 @@ window.addEventListener('load', () => {
     form.addEventListener('submit', handleFormSubmit);
   }
 });
-    sendFormEmail(emailContent, data)
-      .then(() => {
-        alert('Application submitted successfully! We will review your information and contact you soon.');
-        form.reset();
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-        alert('Application submitted but there was an issue sending the confirmation email. Please contact support.');
-        form.reset();
-      });
-  } else {
-    alert('Please fix the errors in the form before submitting.');
-    // Scroll to first error
-    const firstError = document.querySelector('.error-message:not(.hidden)');
-    if (firstError) {
-      firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-}
 
 // Date validation helper
 function isValidDate(day, month, year) {
