@@ -228,7 +228,7 @@ function toggleStayFields() {
   
   const selectedValue = Array.from(radioButtons).find(radio => radio.checked)?.value;
   
-  if (selectedValue === 'Ù†Ø¹Ù…') {
+  if (selectedValue === 'نعم') {
     stayFieldsContainer.style.display = 'block';
   } else {
     stayFieldsContainer.style.display = 'none';
