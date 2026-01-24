@@ -429,7 +429,7 @@ function toggleMilitaryFields() {
   
   const selectedValue = Array.from(radioButtons).find(radio => radio.checked)?.value;
   
-  if (selectedValue === 'Ù†Ø¹Ù…') {
+  if (selectedValue === 'نعم') {
     militaryFieldsContainer.style.display = 'block';
   } else {
     militaryFieldsContainer.style.display = 'none';
