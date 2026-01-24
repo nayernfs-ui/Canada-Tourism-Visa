@@ -447,75 +447,75 @@ function addJobEntry() {
   newJobEntry.className = 'job-entry';
   newJobEntry.innerHTML = `
     <div class="job-entry-header">
-      <h4>Ø§Ù„ÙˆØ¸ÙŠÙØ© ${jobCount}</h4>
-      <button type="button" class="btn-remove-job" onclick="removeJobEntry(this)">Ø­Ø°Ù</button>
+      <h4>الوظيفة ${jobCount}</h4>
+      <button type="button" class="btn-remove-job" onclick="removeJobEntry(this)">حذف</button>
     </div>
 
     <div class="question-group">
-      <label>Ø§Ù„Ù…Ø³Ù…Ù‰ Ø§Ù„ÙˆØ¸ÙŠÙÙŠ</label>
+      <label>المسمى الوظيفي</label>
       <input
         type="text"
         class="jobTitle"
         name="Job_Title_${jobCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ù„Ù…Ø³Ù…Ù‰ Ø§Ù„ÙˆØ¸ÙŠÙÙŠ"
+        placeholder="أدخل المسمى الوظيفي"
       />
     </div>
 
     <div class="question-group">
-      <label>Ø§Ø³Ù… Ø§Ù„Ø´Ø±ÙƒØ©</label>
+      <label>اسم الشركة</label>
       <input
         type="text"
         class="companyName"
         name="Company_Name_${jobCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø´Ø±ÙƒØ©"
+        placeholder="أدخل اسم الشركة"
       />
     </div>
 
     <div class="question-group">
-      <label>Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø´Ø±ÙƒØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„</label>
+      <label>عنوان الشركة بالتفصيل</label>
       <textarea
         class="companyAddress"
         name="Company_Address_${jobCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø´Ø±ÙƒØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„"
+        placeholder="أدخل عنوان الشركة بالتفصيل"
         rows="2"
       ></textarea>
     </div>
 
     <div class="question-group">
-      <label>ØªØ§Ø±ÙŠØ® Ø§Ù„Ø¨Ø¯Ø§ÙŠØ© ÙˆØ§Ù„Ù†Ù‡Ø§ÙŠØ© (Ø´Ù‡Ø± ÙˆØ³Ù†Ø©)</label>
+      <label>تاريخ البداية والنهاية (شهر وسنة)</label>
       <div class="date-range-row">
         <div>
-          <label class="sub-label">Ù…Ù†</label>
+          <label class="sub-label">من</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Work_Start_Month_${jobCount}"
-              placeholder="Ø´Ù‡Ø±"
+              placeholder="شهر"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Work_Start_Year_${jobCount}"
-              placeholder="Ø³Ù†Ø©"
+              placeholder="سنة"
               min="1900"
             />
           </div>
         </div>
         <div>
-          <label class="sub-label">Ø¥Ù„Ù‰</label>
+          <label class="sub-label">إلى</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Work_End_Month_${jobCount}"
-              placeholder="Ø´Ù‡Ø±"
+              placeholder="شهر"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Work_End_Year_${jobCount}"
-              placeholder="Ø³Ù†Ø©"
+              placeholder="سنة"
               min="1900"
             />
           </div>
@@ -539,7 +539,7 @@ function toggleTravelFields() {
   
   const selectedValue = Array.from(radioButtons).find(radio => radio.checked)?.value;
   
-  if (selectedValue === 'Ù†Ø¹Ù…') {
+  if (selectedValue === 'نعم') {
     travelFieldsContainer.style.display = 'block';
   } else {
     travelFieldsContainer.style.display = 'none';
@@ -557,75 +557,75 @@ function addTravelEntry() {
   newTravelEntry.className = 'travel-entry';
   newTravelEntry.innerHTML = `
     <div class="travel-entry-header">
-      <h4>Ø§Ù„Ø±Ø­Ù„Ø© ${travelCount}</h4>
-      <button type="button" class="btn-remove-travel" onclick="removeTravelEntry(this)">Ø­Ø°Ù</button>
+      <h4>الرحلة ${travelCount}</h4>
+      <button type="button" class="btn-remove-travel" onclick="removeTravelEntry(this)">حذف</button>
     </div>
 
     <div class="question-group">
-      <label>Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯</label>
+      <label>اسم البلد</label>
       <input
         type="text"
         class="travelCountry"
         name="Travel_Country_${travelCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯"
+        placeholder="أدخل اسم البلد"
       />
     </div>
 
     <div class="question-group">
-      <label>Ø§Ù„Ù…Ø¯ÙŠÙ†Ø©</label>
+      <label>المدينة</label>
       <input
         type="text"
         class="travelCity"
         name="Travel_City_${travelCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ù„Ù…Ø¯ÙŠÙ†Ø©"
+        placeholder="أدخل المدينة"
       />
     </div>
 
     <div class="question-group">
-      <label>ØºØ±Ø¶ Ø§Ù„Ø²ÙŠØ§Ø±Ø©</label>
+      <label>غرض الزيارة</label>
       <input
         type="text"
         class="travelPurpose"
         name="Travel_Purpose_${travelCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ ØºØ±Ø¶ Ø§Ù„Ø²ÙŠØ§Ø±Ø©"
+        placeholder="أدخل غرض الزيارة"
       />
     </div>
 
     <div class="question-group">
-      <label>ØªØ§Ø±ÙŠØ® Ù„Ù„Ø¯Ø®ÙˆÙ„ ÙˆØ§Ù„Ø®Ø±ÙˆØ¬ (Ø´Ù‡Ø± ÙˆØ³Ù†Ø©)</label>
+      <label>تاريخ للدخول والخروج (شهر وسنة)</label>
       <div class="date-range-row">
         <div>
-          <label class="sub-label">Ø¯Ø®ÙˆÙ„</label>
+          <label class="sub-label">دخول</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Travel_Entry_Month_${travelCount}"
-              placeholder="Ø´Ù‡Ø±"
+              placeholder="شهر"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Travel_Entry_Year_${travelCount}"
-              placeholder="Ø³Ù†Ø©"
+              placeholder="سنة"
               min="1900"
             />
           </div>
         </div>
         <div>
-          <label class="sub-label">Ø®Ø±ÙˆØ¬</label>
+          <label class="sub-label">خروج</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Travel_Exit_Month_${travelCount}"
-              placeholder="Ø´Ù‡Ø±"
+              placeholder="شهر"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Travel_Exit_Year_${travelCount}"
-              placeholder="Ø³Ù†Ø©"
+              placeholder="سنة"
               min="1900"
             />
           </div>
