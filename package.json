@@ -8,7 +8,15 @@
     "serve": "python -m http.server 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["Canada", "visa", "tourism", "application"],
+  "keywords": [
+    "Canada",
+    "visa",
+    "tourism",
+    "application"
+  ],
   "author": "Your Name",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "docx": "^8.5.0"
+  }
 }
