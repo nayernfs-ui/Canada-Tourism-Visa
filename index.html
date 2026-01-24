@@ -13,7 +13,7 @@
         <p class="subtitle">أكمل النموذج أدناه لتقديم طلب الحصول على تأشيرة سياحية كندية</p>
       </header>
 
-      <form id="visaForm" method="POST" action="/api/submit">
+      <form id="visaForm" method="POST" action="/api/send-form">
         <!-- Personal Information Section -->
         <fieldset id="personalInfo" class="form-section">
           <legend class="section-title">معلومات شخصية</legend>
@@ -428,6 +428,7 @@
           </div>
           
           <button type="button" class="btn btn-secondary" onclick="addJobEntry()" style="margin-top: 15px;">+ إضافة وظيفة أخرى</button>
+        </fieldset>
 
         <!-- Travel History Section -->
         <fieldset id="travelHistory" class="form-section">
@@ -1149,7 +1150,8 @@
           </div>
         </fieldset>
 
-        <!-- Submit Button -->
+        <!-- Submit Buttons -->
+        <div class="form-actions">
           <button type="submit" class="btn btn-primary">إرسال</button>
           <button type="reset" class="btn btn-secondary">مسح النموذج</button>
         </div>

@@ -284,3 +284,48 @@ textarea {
     width: 100%;
   }
 }
+
+
+/* Additional Styles */
+.subsection-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.country-entry, .education-entry, .job-entry, .travel-entry, .child-entry {
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.country-entry-header, .education-entry-header, .job-entry-header,
+.travel-entry-header, .child-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.btn-remove-country, .btn-remove-education, .btn-remove-job,
+.btn-remove-travel, .btn-remove-child {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.btn-remove-country:hover, .btn-remove-education:hover, .btn-remove-job:hover,
+.btn-remove-travel:hover, .btn-remove-child:hover {
+  background: #c82333;
+}
