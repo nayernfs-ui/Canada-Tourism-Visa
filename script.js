@@ -246,77 +246,77 @@ function addCountryEntry() {
   newCountryEntry.className = 'country-entry';
   newCountryEntry.innerHTML = `
     <div class="country-entry-header">
-      <h4>Ø§Ù„Ø¨Ù„Ø¯ ${countryCount}</h4>
-      <button type="button" class="btn-remove-country" onclick="removeCountryEntry(this)">Ø­Ø°Ù</button>
+      <h4>البلد ${countryCount}</h4>
+      <button type="button" class="btn-remove-country" onclick="removeCountryEntry(this)">حذف</button>
     </div>
     
     <div class="question-group">
-      <label>Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯</label>
+      <label>اسم البلد</label>
       <input
         type="text"
         class="countryName"
         name="Country_Name_${countryCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯"
+        placeholder="أدخل اسم البلد"
       />
     </div>
 
     <div class="question-group">
-      <label>Ø§Ù„Ø­Ø§Ù„Ø© (Ù…ÙˆØ§Ø·Ù† - Ù…Ù‚ÙŠÙ… - Ù…Ù‡Ø§Ø¬Ø± - Ø§Ø®Ø±Ù‰)</label>
+      <label>الحالة (مواطن - مقيم - مهاجر - اخرى)</label>
       <input
         type="text"
         class="countryStatus"
         name="Country_Status_${countryCount}"
-        placeholder="Ø§Ø®ØªØ± Ø§Ù„Ø­Ø§Ù„Ø©"
+        placeholder="اختر الحالة"
       />
     </div>
 
     <div class="question-group">
-      <label>Ù…Ù† ÙŠÙˆÙ… - Ø´Ù‡Ø± - Ø³Ù†Ø©</label>
+      <label>من يوم - شهر - سنة</label>
       <div class="date-row-small">
         <input
           type="number"
           name="Country_ResidenceDay_${countryCount}"
-          placeholder="ÙŠÙˆÙ…"
+          placeholder="يوم"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Country_ResidenceMonth_${countryCount}"
-          placeholder="Ø´Ù‡Ø±"
+          placeholder="شهر"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Country_ResidenceYear_${countryCount}"
-          placeholder="Ø³Ù†Ø©"
+          placeholder="سنة"
           min="1900"
         />
       </div>
     </div>
 
     <div class="question-group">
-      <label>Ø¥Ù„Ù‰ ÙŠÙˆÙ… - Ø´Ù‡Ø± - Ø³Ù†Ø©</label>
+      <label>إلى يوم - شهر - سنة</label>
       <div class="date-row-small">
         <input
           type="number"
           name="Country_ResidenceEndDay_${countryCount}"
-          placeholder="ÙŠÙˆÙ…"
+          placeholder="يوم"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Country_ResidenceEndMonth_${countryCount}"
-          placeholder="Ø´Ù‡Ø±"
+          placeholder="شهر"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Country_ResidenceEndYear_${countryCount}"
-          placeholder="Ø³Ù†Ø©"
+          placeholder="سنة"
           min="1900"
         />
       </div>
