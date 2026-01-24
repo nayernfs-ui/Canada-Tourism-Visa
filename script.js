@@ -1,4 +1,4 @@
-// Form Validation
+﻿// Form Validation
 const form = document.getElementById('visaForm');
 
 // Validation rules
@@ -228,7 +228,7 @@ function toggleStayFields() {
   
   const selectedValue = Array.from(radioButtons).find(radio => radio.checked)?.value;
   
-  if (selectedValue === 'نعم') {
+  if (selectedValue === 'Ù†Ø¹Ù…') {
     stayFieldsContainer.style.display = 'block';
   } else {
     stayFieldsContainer.style.display = 'none';
@@ -246,77 +246,77 @@ function addCountryEntry() {
   newCountryEntry.className = 'country-entry';
   newCountryEntry.innerHTML = `
     <div class="country-entry-header">
-      <h4>البلد ${countryCount}</h4>
-      <button type="button" class="btn-remove-country" onclick="removeCountryEntry(this)">حذف</button>
+      <h4>Ø§Ù„Ø¨Ù„Ø¯ ${countryCount}</h4>
+      <button type="button" class="btn-remove-country" onclick="removeCountryEntry(this)">Ø­Ø°Ù</button>
     </div>
     
     <div class="question-group">
-      <label>اسم البلد</label>
+      <label>Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯</label>
       <input
         type="text"
         class="countryName"
         name="Country_Name_${countryCount}"
-        placeholder="أدخل اسم البلد"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯"
       />
     </div>
 
     <div class="question-group">
-      <label>الحالة (مواطن - مقيم - مهاجر - اخرى)</label>
+      <label>Ø§Ù„Ø­Ø§Ù„Ø© (Ù…ÙˆØ§Ø·Ù† - Ù…Ù‚ÙŠÙ… - Ù…Ù‡Ø§Ø¬Ø± - Ø§Ø®Ø±Ù‰)</label>
       <input
         type="text"
         class="countryStatus"
         name="Country_Status_${countryCount}"
-        placeholder="اختر الحالة"
+        placeholder="Ø§Ø®ØªØ± Ø§Ù„Ø­Ø§Ù„Ø©"
       />
     </div>
 
     <div class="question-group">
-      <label>من يوم - شهر - سنة</label>
+      <label>Ù…Ù† ÙŠÙˆÙ… - Ø´Ù‡Ø± - Ø³Ù†Ø©</label>
       <div class="date-row-small">
         <input
           type="number"
           name="Country_ResidenceDay_${countryCount}"
-          placeholder="يوم"
+          placeholder="ÙŠÙˆÙ…"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Country_ResidenceMonth_${countryCount}"
-          placeholder="شهر"
+          placeholder="Ø´Ù‡Ø±"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Country_ResidenceYear_${countryCount}"
-          placeholder="سنة"
+          placeholder="Ø³Ù†Ø©"
           min="1900"
         />
       </div>
     </div>
 
     <div class="question-group">
-      <label>إلى يوم - شهر - سنة</label>
+      <label>Ø¥Ù„Ù‰ ÙŠÙˆÙ… - Ø´Ù‡Ø± - Ø³Ù†Ø©</label>
       <div class="date-row-small">
         <input
           type="number"
           name="Country_ResidenceEndDay_${countryCount}"
-          placeholder="يوم"
+          placeholder="ÙŠÙˆÙ…"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Country_ResidenceEndMonth_${countryCount}"
-          placeholder="شهر"
+          placeholder="Ø´Ù‡Ø±"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Country_ResidenceEndYear_${countryCount}"
-          placeholder="سنة"
+          placeholder="Ø³Ù†Ø©"
           min="1900"
         />
       </div>
@@ -343,72 +343,72 @@ function addEducationEntry() {
   newEducationEntry.className = 'education-entry';
   newEducationEntry.innerHTML = `
     <div class="education-entry-header">
-      <h4>التعليم ${educationCount}</h4>
-      <button type="button" class="btn-remove-education" onclick="removeEducationEntry(this)">حذف</button>
+      <h4>Ø§Ù„ØªØ¹Ù„ÙŠÙ… ${educationCount}</h4>
+      <button type="button" class="btn-remove-education" onclick="removeEducationEntry(this)">Ø­Ø°Ù</button>
     </div>
 
     <div class="question-group">
-      <label>اسم المؤهل التعليمي <span class="required">*</span></label>
+      <label>Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ù‡Ù„ Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠ <span class="required">*</span></label>
       <input
         type="text"
         class="qualificationName"
         name="Qualification_Name_${educationCount}"
-        placeholder="أدخل اسم المؤهل التعليمي"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ù‡Ù„ Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠ"
       />
     </div>
 
     <div class="question-group">
-      <label>اسم المؤسسة التعليمية <span class="required">*</span></label>
+      <label>Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ© <span class="required">*</span></label>
       <input
         type="text"
         class="institutionName"
         name="Institution_Name_${educationCount}"
-        placeholder="أدخل اسم المؤسسة التعليمية"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ©"
       />
     </div>
 
     <div class="question-group">
-      <label>تاريخ التخرج <span class="required">*</span></label>
+      <label>ØªØ§Ø±ÙŠØ® Ø§Ù„ØªØ®Ø±Ø¬ <span class="required">*</span></label>
       <div class="date-row">
         <input
           type="number"
           name="Graduation_Day_${educationCount}"
-          placeholder="يوم"
+          placeholder="ÙŠÙˆÙ…"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Graduation_Month_${educationCount}"
-          placeholder="شهر"
+          placeholder="Ø´Ù‡Ø±"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Graduation_Year_${educationCount}"
-          placeholder="سنة"
+          placeholder="Ø³Ù†Ø©"
           min="1900"
         />
       </div>
     </div>
 
     <div class="question-group">
-      <label>الشعبة <span class="required">*</span></label>
+      <label>Ø§Ù„Ø´Ø¹Ø¨Ø© <span class="required">*</span></label>
       <input
         type="text"
         class="certificate"
         name="Certificate_${educationCount}"
-        placeholder="أدخل نوع الشعبة"
+        placeholder="Ø£Ø¯Ø®Ù„ Ù†ÙˆØ¹ Ø§Ù„Ø´Ø¹Ø¨Ø©"
       />
     </div>
 
     <div class="question-group">
-      <label>عنوان المؤسسة التعليمية بالتفصيل <span class="required">*</span></label>
+      <label>Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„ <span class="required">*</span></label>
       <textarea
         class="institutionAddress"
         name="Institution_Address_${educationCount}"
-        placeholder="أدخل عنوان المؤسسة التعليمية بالتفصيل"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„"
         rows="3"
       ></textarea>
     </div>
@@ -429,7 +429,7 @@ function toggleMilitaryFields() {
   
   const selectedValue = Array.from(radioButtons).find(radio => radio.checked)?.value;
   
-  if (selectedValue === 'نعم') {
+  if (selectedValue === 'Ù†Ø¹Ù…') {
     militaryFieldsContainer.style.display = 'block';
   } else {
     militaryFieldsContainer.style.display = 'none';
@@ -447,75 +447,75 @@ function addJobEntry() {
   newJobEntry.className = 'job-entry';
   newJobEntry.innerHTML = `
     <div class="job-entry-header">
-      <h4>الوظيفة ${jobCount}</h4>
-      <button type="button" class="btn-remove-job" onclick="removeJobEntry(this)">حذف</button>
+      <h4>Ø§Ù„ÙˆØ¸ÙŠÙØ© ${jobCount}</h4>
+      <button type="button" class="btn-remove-job" onclick="removeJobEntry(this)">Ø­Ø°Ù</button>
     </div>
 
     <div class="question-group">
-      <label>المسمى الوظيفي</label>
+      <label>Ø§Ù„Ù…Ø³Ù…Ù‰ Ø§Ù„ÙˆØ¸ÙŠÙÙŠ</label>
       <input
         type="text"
         class="jobTitle"
         name="Job_Title_${jobCount}"
-        placeholder="أدخل المسمى الوظيفي"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ù„Ù…Ø³Ù…Ù‰ Ø§Ù„ÙˆØ¸ÙŠÙÙŠ"
       />
     </div>
 
     <div class="question-group">
-      <label>اسم الشركة</label>
+      <label>Ø§Ø³Ù… Ø§Ù„Ø´Ø±ÙƒØ©</label>
       <input
         type="text"
         class="companyName"
         name="Company_Name_${jobCount}"
-        placeholder="أدخل اسم الشركة"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø´Ø±ÙƒØ©"
       />
     </div>
 
     <div class="question-group">
-      <label>عنوان الشركة بالتفصيل</label>
+      <label>Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø´Ø±ÙƒØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„</label>
       <textarea
         class="companyAddress"
         name="Company_Address_${jobCount}"
-        placeholder="أدخل عنوان الشركة بالتفصيل"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø´Ø±ÙƒØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„"
         rows="2"
       ></textarea>
     </div>
 
     <div class="question-group">
-      <label>تاريخ البداية والنهاية (شهر وسنة)</label>
+      <label>ØªØ§Ø±ÙŠØ® Ø§Ù„Ø¨Ø¯Ø§ÙŠØ© ÙˆØ§Ù„Ù†Ù‡Ø§ÙŠØ© (Ø´Ù‡Ø± ÙˆØ³Ù†Ø©)</label>
       <div class="date-range-row">
         <div>
-          <label class="sub-label">من</label>
+          <label class="sub-label">Ù…Ù†</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Work_Start_Month_${jobCount}"
-              placeholder="شهر"
+              placeholder="Ø´Ù‡Ø±"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Work_Start_Year_${jobCount}"
-              placeholder="سنة"
+              placeholder="Ø³Ù†Ø©"
               min="1900"
             />
           </div>
         </div>
         <div>
-          <label class="sub-label">إلى</label>
+          <label class="sub-label">Ø¥Ù„Ù‰</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Work_End_Month_${jobCount}"
-              placeholder="شهر"
+              placeholder="Ø´Ù‡Ø±"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Work_End_Year_${jobCount}"
-              placeholder="سنة"
+              placeholder="Ø³Ù†Ø©"
               min="1900"
             />
           </div>
@@ -539,7 +539,7 @@ function toggleTravelFields() {
   
   const selectedValue = Array.from(radioButtons).find(radio => radio.checked)?.value;
   
-  if (selectedValue === 'نعم') {
+  if (selectedValue === 'Ù†Ø¹Ù…') {
     travelFieldsContainer.style.display = 'block';
   } else {
     travelFieldsContainer.style.display = 'none';
@@ -557,75 +557,75 @@ function addTravelEntry() {
   newTravelEntry.className = 'travel-entry';
   newTravelEntry.innerHTML = `
     <div class="travel-entry-header">
-      <h4>الرحلة ${travelCount}</h4>
-      <button type="button" class="btn-remove-travel" onclick="removeTravelEntry(this)">حذف</button>
+      <h4>Ø§Ù„Ø±Ø­Ù„Ø© ${travelCount}</h4>
+      <button type="button" class="btn-remove-travel" onclick="removeTravelEntry(this)">Ø­Ø°Ù</button>
     </div>
 
     <div class="question-group">
-      <label>اسم البلد</label>
+      <label>Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯</label>
       <input
         type="text"
         class="travelCountry"
         name="Travel_Country_${travelCount}"
-        placeholder="أدخل اسم البلد"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø¨Ù„Ø¯"
       />
     </div>
 
     <div class="question-group">
-      <label>المدينة</label>
+      <label>Ø§Ù„Ù…Ø¯ÙŠÙ†Ø©</label>
       <input
         type="text"
         class="travelCity"
         name="Travel_City_${travelCount}"
-        placeholder="أدخل المدينة"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ù„Ù…Ø¯ÙŠÙ†Ø©"
       />
     </div>
 
     <div class="question-group">
-      <label>غرض الزيارة</label>
+      <label>ØºØ±Ø¶ Ø§Ù„Ø²ÙŠØ§Ø±Ø©</label>
       <input
         type="text"
         class="travelPurpose"
         name="Travel_Purpose_${travelCount}"
-        placeholder="أدخل غرض الزيارة"
+        placeholder="Ø£Ø¯Ø®Ù„ ØºØ±Ø¶ Ø§Ù„Ø²ÙŠØ§Ø±Ø©"
       />
     </div>
 
     <div class="question-group">
-      <label>تاريخ للدخول والخروج (شهر وسنة)</label>
+      <label>ØªØ§Ø±ÙŠØ® Ù„Ù„Ø¯Ø®ÙˆÙ„ ÙˆØ§Ù„Ø®Ø±ÙˆØ¬ (Ø´Ù‡Ø± ÙˆØ³Ù†Ø©)</label>
       <div class="date-range-row">
         <div>
-          <label class="sub-label">دخول</label>
+          <label class="sub-label">Ø¯Ø®ÙˆÙ„</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Travel_Entry_Month_${travelCount}"
-              placeholder="شهر"
+              placeholder="Ø´Ù‡Ø±"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Travel_Entry_Year_${travelCount}"
-              placeholder="سنة"
+              placeholder="Ø³Ù†Ø©"
               min="1900"
             />
           </div>
         </div>
         <div>
-          <label class="sub-label">خروج</label>
+          <label class="sub-label">Ø®Ø±ÙˆØ¬</label>
           <div class="date-row-small">
             <input
               type="number"
               name="Travel_Exit_Month_${travelCount}"
-              placeholder="شهر"
+              placeholder="Ø´Ù‡Ø±"
               min="1"
               max="12"
             />
             <input
               type="number"
               name="Travel_Exit_Year_${travelCount}"
-              placeholder="سنة"
+              placeholder="Ø³Ù†Ø©"
               min="1900"
             />
           </div>
@@ -651,53 +651,53 @@ function addChildEntry() {
   newChildEntry.className = 'child-entry';
   newChildEntry.innerHTML = `
     <div class="child-entry-header">
-      <h4>الابن ${childCount}</h4>
-      <button type="button" class="btn-remove-child" onclick="removeChildEntry(this)">حذف</button>
+      <h4>Ø§Ù„Ø§Ø¨Ù† ${childCount}</h4>
+      <button type="button" class="btn-remove-child" onclick="removeChildEntry(this)">Ø­Ø°Ù</button>
     </div>
 
     <div class="question-group">
-      <label>اسم الابن</label>
+      <label>Ø§Ø³Ù… Ø§Ù„Ø§Ø¨Ù†</label>
       <input
         type="text"
         class="childName"
         name="Child_Name_${childCount}"
-        placeholder="أدخل اسم الابن"
+        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø§Ø¨Ù†"
       />
     </div>
 
     <div class="question-group">
-      <label>تاريخ الميلاد (يوم - شهر - سنة)</label>
+      <label>ØªØ§Ø±ÙŠØ® Ø§Ù„Ù…ÙŠÙ„Ø§Ø¯ (ÙŠÙˆÙ… - Ø´Ù‡Ø± - Ø³Ù†Ø©)</label>
       <div class="date-row-small">
         <input
           type="number"
           name="Child_Birth_Day_${childCount}"
-          placeholder="يوم"
+          placeholder="ÙŠÙˆÙ…"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Child_Birth_Month_${childCount}"
-          placeholder="شهر"
+          placeholder="Ø´Ù‡Ø±"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Child_Birth_Year_${childCount}"
-          placeholder="سنة"
+          placeholder="Ø³Ù†Ø©"
           min="1900"
         />
       </div>
     </div>
 
     <div class="question-group">
-      <label>محافظة الميلاد</label>
+      <label>Ù…Ø­Ø§ÙØ¸Ø© Ø§Ù„Ù…ÙŠÙ„Ø§Ø¯</label>
       <input
         type="text"
         class="childBirthGovernorate"
         name="Child_Birth_Governorate_${childCount}"
-        placeholder="أدخل محافظة الميلاد"
+        placeholder="Ø£Ø¯Ø®Ù„ Ù…Ø­Ø§ÙØ¸Ø© Ø§Ù„Ù…ÙŠÙ„Ø§Ø¯"
       />
     </div>
   `;
@@ -744,5 +744,19 @@ function toggleMaritalStatusSection() {
     spouseInfoSection.style.display = 'none';
     divorcedInfoSection.style.display = 'none';
     widowedInfoSection.style.display = 'none';
+  }
+}
+
+// Toggle previous Canadian visa fields
+function togglePreviousVisaFields() {
+  const previousVisaFieldsContainer = document.getElementById('previousVisaFieldsContainer');
+  const radioButtons = document.getElementsByName('PreviousCanadianVisa');
+  
+  const selectedValue = Array.from(radioButtons).find(radio => radio.checked)?.value;
+  
+  if (selectedValue === 'yes') {
+    previousVisaFieldsContainer.style.display = 'block';
+  } else {
+    previousVisaFieldsContainer.style.display = 'none';
   }
 }
