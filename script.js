@@ -343,72 +343,72 @@ function addEducationEntry() {
   newEducationEntry.className = 'education-entry';
   newEducationEntry.innerHTML = `
     <div class="education-entry-header">
-      <h4>Ø§Ù„ØªØ¹Ù„ÙŠÙ… ${educationCount}</h4>
-      <button type="button" class="btn-remove-education" onclick="removeEducationEntry(this)">Ø­Ø°Ù</button>
+      <h4>التعليم ${educationCount}</h4>
+      <button type="button" class="btn-remove-education" onclick="removeEducationEntry(this)">حذف</button>
     </div>
 
     <div class="question-group">
-      <label>Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ù‡Ù„ Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠ <span class="required">*</span></label>
+      <label>اسم المؤهل التعليمي <span class="required">*</span></label>
       <input
         type="text"
         class="qualificationName"
         name="Qualification_Name_${educationCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ù‡Ù„ Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠ"
+        placeholder="أدخل اسم المؤهل التعليمي"
       />
     </div>
 
     <div class="question-group">
-      <label>Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ© <span class="required">*</span></label>
+      <label>اسم المؤسسة التعليمية <span class="required">*</span></label>
       <input
         type="text"
         class="institutionName"
         name="Institution_Name_${educationCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ©"
+        placeholder="أدخل اسم المؤسسة التعليمية"
       />
     </div>
 
     <div class="question-group">
-      <label>ØªØ§Ø±ÙŠØ® Ø§Ù„ØªØ®Ø±Ø¬ <span class="required">*</span></label>
+      <label>تاريخ التخرج <span class="required">*</span></label>
       <div class="date-row">
         <input
           type="number"
           name="Graduation_Day_${educationCount}"
-          placeholder="ÙŠÙˆÙ…"
+          placeholder="يوم"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Graduation_Month_${educationCount}"
-          placeholder="Ø´Ù‡Ø±"
+          placeholder="شهر"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Graduation_Year_${educationCount}"
-          placeholder="Ø³Ù†Ø©"
+          placeholder="سنة"
           min="1900"
         />
       </div>
     </div>
 
     <div class="question-group">
-      <label>Ø§Ù„Ø´Ø¹Ø¨Ø© <span class="required">*</span></label>
+      <label>الشعبة <span class="required">*</span></label>
       <input
         type="text"
         class="certificate"
         name="Certificate_${educationCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ù†ÙˆØ¹ Ø§Ù„Ø´Ø¹Ø¨Ø©"
+        placeholder="أدخل نوع الشعبة"
       />
     </div>
 
     <div class="question-group">
-      <label>Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„ <span class="required">*</span></label>
+      <label>عنوان المؤسسة التعليمية بالتفصيل <span class="required">*</span></label>
       <textarea
         class="institutionAddress"
         name="Institution_Address_${educationCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ© Ø¨Ø§Ù„ØªÙØµÙŠÙ„"
+        placeholder="أدخل عنوان المؤسسة التعليمية بالتفصيل"
         rows="3"
       ></textarea>
     </div>
@@ -651,53 +651,53 @@ function addChildEntry() {
   newChildEntry.className = 'child-entry';
   newChildEntry.innerHTML = `
     <div class="child-entry-header">
-      <h4>Ø§Ù„Ø§Ø¨Ù† ${childCount}</h4>
-      <button type="button" class="btn-remove-child" onclick="removeChildEntry(this)">Ø­Ø°Ù</button>
+      <h4>الابن ${childCount}</h4>
+      <button type="button" class="btn-remove-child" onclick="removeChildEntry(this)">حذف</button>
     </div>
 
     <div class="question-group">
-      <label>Ø§Ø³Ù… Ø§Ù„Ø§Ø¨Ù†</label>
+      <label>اسم الابن</label>
       <input
         type="text"
         class="childName"
         name="Child_Name_${childCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ø§Ø¨Ù†"
+        placeholder="أدخل اسم الابن"
       />
     </div>
 
     <div class="question-group">
-      <label>ØªØ§Ø±ÙŠØ® Ø§Ù„Ù…ÙŠÙ„Ø§Ø¯ (ÙŠÙˆÙ… - Ø´Ù‡Ø± - Ø³Ù†Ø©)</label>
+      <label>تاريخ الميلاد (يوم - شهر - سنة)</label>
       <div class="date-row-small">
         <input
           type="number"
           name="Child_Birth_Day_${childCount}"
-          placeholder="ÙŠÙˆÙ…"
+          placeholder="يوم"
           min="1"
           max="31"
         />
         <input
           type="number"
           name="Child_Birth_Month_${childCount}"
-          placeholder="Ø´Ù‡Ø±"
+          placeholder="شهر"
           min="1"
           max="12"
         />
         <input
           type="number"
           name="Child_Birth_Year_${childCount}"
-          placeholder="Ø³Ù†Ø©"
+          placeholder="سنة"
           min="1900"
         />
       </div>
     </div>
 
     <div class="question-group">
-      <label>Ù…Ø­Ø§ÙØ¸Ø© Ø§Ù„Ù…ÙŠÙ„Ø§Ø¯</label>
+      <label>محافظة الميلاد</label>
       <input
         type="text"
         class="childBirthGovernorate"
         name="Child_Birth_Governorate_${childCount}"
-        placeholder="Ø£Ø¯Ø®Ù„ Ù…Ø­Ø§ÙØ¸Ø© Ø§Ù„Ù…ÙŠÙ„Ø§Ø¯"
+        placeholder="أدخل محافظة الميلاد"
       />
     </div>
   `;
