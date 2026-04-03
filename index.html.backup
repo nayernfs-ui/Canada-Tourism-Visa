@@ -244,18 +244,7 @@
                     </div>
                   </div>
 
-                  <div class="question-group">
-                    <label>إلى يوم - شهر - سنة</label>
-                    <div class="date-row-small">
-                      <input
-                        type="number"
-                        name="Country_ResidenceEndDay_1"
-                        placeholder="يوم"
-                        min="1"
-                        max="31"
-                      />
-                      <input
-                        type="number"
+
                         name="Country_ResidenceEndMonth_1"
                         placeholder="شهر"
                         min="1"

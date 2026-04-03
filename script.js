@@ -371,31 +371,7 @@ function addCountryEntry() {
       </div>
     </div>
 
-    <div class="question-group">
-      <label>إلى يوم - شهر - سنة</label>
-      <div class="date-row-small">
-        <input
-          type="number"
-          name="Country_ResidenceEndDay_${countryCount}"
-          placeholder="يوم"
-          min="1"
-          max="31"
-        />
-        <input
-          type="number"
-          name="Country_ResidenceEndMonth_${countryCount}"
-          placeholder="شهر"
-          min="1"
-          max="12"
-        />
-        <input
-          type="number"
-          name="Country_ResidenceEndYear_${countryCount}"
-          placeholder="سنة"
-          min="1900"
-        />
-      </div>
-    </div>
+
   `;
   
   countriesContainer.appendChild(newCountryEntry);
