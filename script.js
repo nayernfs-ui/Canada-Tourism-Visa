@@ -272,28 +272,29 @@ function toggleMultiNationalityFields(value) {
   if (value === 'نعم') {
     container.style.display = 'block';
     if (input) input.required = true;
-    document.getElementById('citizenshipSinceDateGroup').style.display = 'block';
+    document.getElementById('citizenshipSinceDateGroup').style.display = 'none';
   } else {
     container.style.display = 'none';
     if (input) {
       input.required = false;
       input.value = '';
     }
+    document.querySelector('input[name="CitizenSinceBirth"][value="نعم"]').checked = false;
+    document.querySelector('input[name="CitizenSinceBirth"][value="لا"]').checked = false;
     document.getElementById('citizenshipSinceDateGroup').style.display = 'none';
-    document.getElementById('citizenSinceBirth').checked = false;
     document.getElementById('Citizenship_Since_Year').value = '';
     document.getElementById('Citizenship_Since_Month').value = '';
     document.getElementById('Citizenship_Since_Day').value = '';
   }
 }
 
-function toggleCitizenSinceBirth(isChecked) {
+function toggleCitizenSinceBirth(value) {
   const dateGroup = document.getElementById('citizenshipSinceDateGroup');
   const yearSelect = document.getElementById('Citizenship_Since_Year');
   const monthSelect = document.getElementById('Citizenship_Since_Month');
   const daySelect = document.getElementById('Citizenship_Since_Day');
 
-  if (isChecked) {
+  if (value === 'نعم') {
     yearSelect.required = false;
     monthSelect.required = false;
     daySelect.required = false;

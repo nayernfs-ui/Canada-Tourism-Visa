@@ -77,13 +77,18 @@
             </div>
 
             <div class="question-group">
-              <label>
-                <input type="checkbox" id="citizenSinceBirth" onchange="toggleCitizenSinceBirth(this.checked)" />
-                أنا مواطن لهذا البلد أو الإقليم منذ الولادة
-              </label>
+              <label>هل أنت مواطن لهذا البلد أو الإقليم منذ الولادة؟ <span class="required">*</span></label>
+              <div class="options-row" role="radiogroup">
+                <label>
+                  <input type="radio" name="CitizenSinceBirth" value="نعم" required onchange="toggleCitizenSinceBirth(this.value)" /> نعم
+                </label>
+                <label>
+                  <input type="radio" name="CitizenSinceBirth" value="لا" required onchange="toggleCitizenSinceBirth(this.value)" /> لا
+                </label>
+              </div>
             </div>
 
-            <div class="question-group" id="citizenshipSinceDateGroup">
+            <div class="question-group" id="citizenshipSinceDateGroup" style="display: none;">
               <label>منذ أي تاريخ أنت مواطن لهذا البلد أو الإقليم؟ <span class="required">*</span></label>
               <div class="date-row-small">
                 <select name="Citizenship_Since_Year" id="Citizenship_Since_Year" required>
