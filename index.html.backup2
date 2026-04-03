@@ -55,6 +55,29 @@
           </div>
 
           <div class="question-group">
+            <label>هل أنت مواطن لأكثر من بلد أو إقليم؟ <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup">
+              <label>
+                <input type="radio" name="MultipleNationality" value="نعم" required onchange="toggleMultiNationalityFields(this.value)" /> نعم
+              </label>
+              <label>
+                <input type="radio" name="MultipleNationality" value="لا" required onchange="toggleMultiNationalityFields(this.value)" /> لا
+              </label>
+            </div>
+          </div>
+
+          <div class="sub-fields" id="multiNationalityFields" style="display: none;">
+            <div class="question-group">
+              <label>حدد البلد أو الإقليم الإضافي</label>
+              <input
+                type="text"
+                name="Additional_Citizenship"
+                placeholder="أدخل اسم البلد أو الإقليم"
+              />
+            </div>
+          </div>
+
+          <div class="question-group">
             <label for="currentAddress">عنوان الإقامة الحالي بالتفصيل <span class="required">*</span></label>
             <textarea
               id="currentAddress"

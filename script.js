@@ -235,6 +235,23 @@ function toggleStayFields() {
   }
 }
 
+// Toggle multi-nationality extra field
+function toggleMultiNationalityFields(value) {
+  const container = document.getElementById('multiNationalityFields');
+  const input = document.querySelector('input[name="Additional_Citizenship"]');
+
+  if (value === 'نعم') {
+    container.style.display = 'block';
+    if (input) input.required = true;
+  } else {
+    container.style.display = 'none';
+    if (input) {
+      input.required = false;
+      input.value = '';
+    }
+  }
+}
+
 // Add new country entry
 let countryCount = 1;
 
