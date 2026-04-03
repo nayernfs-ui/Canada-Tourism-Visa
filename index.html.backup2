@@ -372,7 +372,7 @@
           <div id="jobsContainer">
             <div class="job-entry">
               <div class="job-entry-header">
-                <h4>الوظيفة 1</h4>
+                <h4>الوظيفة الحالية</h4>
                 <button type="button" class="btn-remove-job" onclick="removeJobEntry(this)" style="display: none;">حذف</button>
               </div>
 
