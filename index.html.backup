@@ -194,7 +194,7 @@
               <div id="countriesContainer">
                 <div class="country-entry">
                   <div class="country-entry-header">
-                    <h4>البلد 1</h4>
+                    <h4>بلد اقامتك الحالي</h4>
                     <button type="button" class="btn-remove-country" onclick="removeCountryEntry(this)" style="display: none;">حذف</button>
                   </div>
                   
