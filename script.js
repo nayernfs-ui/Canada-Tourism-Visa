@@ -188,6 +188,35 @@ window.addEventListener('load', () => {
   if (form) {
     form.addEventListener('submit', handleFormSubmit);
   }
+
+  // Fill citizenship since date selects
+  const yearSelect = document.getElementById('Citizenship_Since_Year');
+  const monthSelect = document.getElementById('Citizenship_Since_Month');
+  const daySelect = document.getElementById('Citizenship_Since_Day');
+
+  if (yearSelect && monthSelect && daySelect) {
+    const currentYear = new Date().getFullYear();
+    for (let y = currentYear; y >= 1900; y--) {
+      const option = document.createElement('option');
+      option.value = y;
+      option.textContent = y;
+      yearSelect.appendChild(option);
+    }
+
+    for (let m = 1; m <= 12; m++) {
+      const option = document.createElement('option');
+      option.value = m;
+      option.textContent = m;
+      monthSelect.appendChild(option);
+    }
+
+    for (let d = 1; d <= 31; d++) {
+      const option = document.createElement('option');
+      option.value = d;
+      option.textContent = d;
+      daySelect.appendChild(option);
+    }
+  }
 });
 
 // Date validation helper
@@ -243,12 +272,40 @@ function toggleMultiNationalityFields(value) {
   if (value === 'نعم') {
     container.style.display = 'block';
     if (input) input.required = true;
+    document.getElementById('citizenshipSinceDateGroup').style.display = 'block';
   } else {
     container.style.display = 'none';
     if (input) {
       input.required = false;
       input.value = '';
     }
+    document.getElementById('citizenshipSinceDateGroup').style.display = 'none';
+    document.getElementById('citizenSinceBirth').checked = false;
+    document.getElementById('Citizenship_Since_Year').value = '';
+    document.getElementById('Citizenship_Since_Month').value = '';
+    document.getElementById('Citizenship_Since_Day').value = '';
+  }
+}
+
+function toggleCitizenSinceBirth(isChecked) {
+  const dateGroup = document.getElementById('citizenshipSinceDateGroup');
+  const yearSelect = document.getElementById('Citizenship_Since_Year');
+  const monthSelect = document.getElementById('Citizenship_Since_Month');
+  const daySelect = document.getElementById('Citizenship_Since_Day');
+
+  if (isChecked) {
+    yearSelect.required = false;
+    monthSelect.required = false;
+    daySelect.required = false;
+    dateGroup.style.display = 'none';
+    yearSelect.value = '';
+    monthSelect.value = '';
+    daySelect.value = '';
+  } else {
+    yearSelect.required = true;
+    monthSelect.required = true;
+    daySelect.required = true;
+    dateGroup.style.display = 'block';
   }
 }
 

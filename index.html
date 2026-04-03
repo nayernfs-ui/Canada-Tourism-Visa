@@ -75,6 +75,28 @@
                 placeholder="أدخل اسم البلد أو الإقليم"
               />
             </div>
+
+            <div class="question-group">
+              <label>
+                <input type="checkbox" id="citizenSinceBirth" onchange="toggleCitizenSinceBirth(this.checked)" />
+                أنا مواطن لهذا البلد أو الإقليم منذ الولادة
+              </label>
+            </div>
+
+            <div class="question-group" id="citizenshipSinceDateGroup">
+              <label>منذ أي تاريخ أنت مواطن لهذا البلد أو الإقليم؟ <span class="required">*</span></label>
+              <div class="date-row-small">
+                <select name="Citizenship_Since_Year" id="Citizenship_Since_Year" required>
+                  <option value="">السنة</option>
+                </select>
+                <select name="Citizenship_Since_Month" id="Citizenship_Since_Month" required>
+                  <option value="">الشهر</option>
+                </select>
+                <select name="Citizenship_Since_Day" id="Citizenship_Since_Day" required>
+                  <option value="">اليوم</option>
+                </select>
+              </div>
+            </div>
           </div>
 
           <div class="question-group">
