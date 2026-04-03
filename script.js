@@ -310,6 +310,19 @@ function toggleCitizenSinceBirth(value) {
   }
 }
 
+function toggleBiometricYear(value) {
+  const yearGroup = document.getElementById('biometricYearGroup');
+  const yearInput = document.getElementById('Biometric_Year');
+  if (value === 'نعم') {
+    yearGroup.style.display = 'block';
+    yearInput.required = true;
+  } else {
+    yearGroup.style.display = 'none';
+    yearInput.required = false;
+    yearInput.value = '';
+  }
+}
+
 // Add new country entry
 let countryCount = 1;
 

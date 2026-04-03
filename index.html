@@ -165,6 +165,24 @@
           </div>
 
           <div class="question-group">
+            <label>هل قمت بتقديم بياناتك الحيوية (بصمة الأصابع والصورة) خلال العشر سنوات الماضية عند التقديم على:
+              تأشيرة زائر، تمديد زيارة، استعادة الحالة، تصريح عمل (بما في ذلك التجديد)، تصريح دراسة (بما في ذلك التجديد)، أو تصريح إقامة مؤقتة؟ <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup">
+              <label>
+                <input type="radio" name="ProvidedBiometrics" value="نعم" required onchange="toggleBiometricYear(this.value)" /> نعم
+              </label>
+              <label>
+                <input type="radio" name="ProvidedBiometrics" value="لا" required onchange="toggleBiometricYear(this.value)" /> لا
+              </label>
+            </div>
+          </div>
+
+          <div class="question-group" id="biometricYearGroup" style="display: none;">
+            <label>العام الذي قدمت فيه البيانات الحيوية</label>
+            <input type="number" name="Biometric_Year" id="Biometric_Year" placeholder="سنة" min="1900" max="2100" />
+          </div>
+
+          <div class="question-group">
             <label>هل تستخدم جواز سفر مختلفاً في هذه الطلب عن الجواز الذي استخدمته للحصول على تأشيرة دخول غير مهاجر إلى الولايات المتحدة؟ <span class="required">*</span></label>
             <div class="options-row" role="radiogroup">
               <label>
