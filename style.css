@@ -140,10 +140,10 @@ textarea {
 }
 
 .field-instruction {
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 1rem;
+  color: #000;
   margin-bottom: 15px;
-  font-style: italic;
+  font-style: normal;
 }
 
 .date-range-row {
