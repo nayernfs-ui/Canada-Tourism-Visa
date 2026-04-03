@@ -91,6 +91,18 @@
           </div>
 
           <div class="question-group">
+            <label>هل حصلت على تأشيرة سياحية كندية خلال السنوات العشر الماضية؟ <span class="required">*</span></label>
+            <div class="options-row" role="radiogroup">
+              <label>
+                <input type="radio" name="PastCanadianVisitorVisa" value="yes" required /> نعم
+              </label>
+              <label>
+                <input type="radio" name="PastCanadianVisitorVisa" value="no" /> لا
+              </label>
+            </div>
+          </div>
+
+          <div class="question-group">
             <label>هل تستخدم جواز سفر مختلفاً في هذه الطلب عن الجواز الذي استخدمته للحصول على تأشيرة دخول غير مهاجر إلى الولايات المتحدة؟ <span class="required">*</span></label>
             <div class="options-row" role="radiogroup">
               <label>
