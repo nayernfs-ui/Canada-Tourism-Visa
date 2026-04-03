@@ -367,7 +367,7 @@
 
         <!-- Work Experience Section -->
         <fieldset id="workExperience" class="form-section">
-          <legend class="section-title">التاريخ الوظيفي</legend>
+          <legend class="section-title">التاريخ الوظيفي اخر عشر سنوات</legend>
 
           <div id="jobsContainer">
             <div class="job-entry">
